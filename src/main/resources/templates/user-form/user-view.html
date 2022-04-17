@@ -52,7 +52,7 @@
 				<li class="nav-item"><a class="nav-link active" id="list-tab"
 					data-toggle="tab" href="#list" role="tab" aria-controls="list"
 					aria-selected="false">List</a></li>
-				<li class="nav-item"><a class="nav-link" id="form-tab"
+				<li class="nav-item"><a class="nav-link" th:classappend=" ${formTab}" id="form-tab"
 					data-toggle="tab" href="#form" role="tab" aria-controls="form"
 					aria-selected="true">Form</a></li>
 			</ul>
@@ -77,7 +77,8 @@
 							<h4>User Information</h4>
 						</div>
 						<div class="card-body">
-						<div th:include="user-form/user-form.html" th:remove="tag">
+							<div th:include="user-form/user-form.html" th:remove="tag">
+							</div>
 						</div>
 					</div>
 				</div>

@@ -19,7 +19,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.ManyToAny;
 
 @Entity
-public class Usuario implements Serializable {
+public class User implements Serializable {
 
 	/**
 	 * 
@@ -138,7 +138,7 @@ public class Usuario implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Usuario other = (Usuario) obj;
+		User other = (User) obj;
 		return Objects.equals(apellidos, other.apellidos) && Objects.equals(confirmPassword, other.confirmPassword)
 				&& Objects.equals(email, other.email) && Objects.equals(id, other.id)
 				&& Objects.equals(nombre, other.nombre) && Objects.equals(password, other.password)
