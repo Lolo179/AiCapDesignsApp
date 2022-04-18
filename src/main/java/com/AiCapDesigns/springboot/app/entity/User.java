@@ -13,6 +13,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import javax.persistence.Column;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -31,14 +33,20 @@ public class User implements Serializable {
 	private Long id;
 
 	@Column
+	@NotBlank
+	@Size(min=5,max=8,message="No se cumplen las reglas de tamaño")
 	private String nombre;
 	@Column
+	@NotBlank
 	private String apellidos;
 	@Column
+	@NotBlank
 	private String email;
 	@Column
+	@NotBlank
 	private String usuario;
 	@Column
+	@NotBlank
 	private String password;
 
 	// Anotacion transient: omite el valor del campo en la BBDD
