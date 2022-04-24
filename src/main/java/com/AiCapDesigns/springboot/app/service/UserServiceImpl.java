@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User getUserById(Long id) throws Exception {
 		// TODO Auto-generated method stub
-		return repository.findById(id).orElseThrow(() -> new Exception("El usuario a editar no existe"));
+		return repository.findById(id).orElseThrow(() -> new Exception("El usuario no existe"));
 	}
 
 
@@ -72,5 +72,15 @@ public class UserServiceImpl implements UserService {
 		to.setApellidos(from.getApellidos());
 		to.setEmail(from.getEmail());
 		to.setRoles(from.getRoles());
+	}
+
+
+
+	@Override
+	public void deleteUser(Long id) throws Exception {
+		User user = getUserById(id);
+		
+		repository.delete(user);
+		
 	}
 }
