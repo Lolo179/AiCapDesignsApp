@@ -6,6 +6,7 @@ import org.hibernate.mapping.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.AiCapDesigns.springboot.app.dto.ChangePasswordForm;
 import com.AiCapDesigns.springboot.app.entity.User;
 import com.AiCapDesigns.springboot.app.repository.UserRepository;
 
@@ -82,5 +83,22 @@ public class UserServiceImpl implements UserService {
 		
 		repository.delete(user);
 		
+	}
+
+	@Override
+	public User changePassword(ChangePasswordForm form) throws Exception {
+		User user = getUserById(form.getId());
+		
+		if(!user.getPassword().equals(form.getCurrentPassword())) {
+			throw new Exception("Current Password invalido!");
+		}
+		if(user.getPassword().equals(form.getNewPassword())) {
+			throw new Exception("Nuevo password debe ser diferencte del actual");
+		}
+		if(!form.getNewPassword().equals(form.getConfirmPassword())) {
+			throw new Exception("Nuevo password debe ser igual a confirmar password");
+		}
+		user.setPassword(form.getNewPassword());
+		return repository.save(user);
 	}
 }
